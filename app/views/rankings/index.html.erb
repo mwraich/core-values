@@ -15,9 +15,10 @@
   <tbody>
     <% @rankings.each do |ranking| %>
       <tr>
-        <td><%= ranking.card_id %></td>
-        <td><%= ranking.rating_id %></td>
-        <td><%= ranking.selection_id %></td>
+      <%# TODO -> rankings with the same selection can't have the same card %>
+        <td><%= ranking.card.name %></td>
+        <td><%= ranking.rating.name %></td>
+        <td><%= ranking.selection.name %></td>
         <td><%= link_to 'Show', ranking %></td>
         <td><%= link_to 'Edit', edit_ranking_path(ranking) %></td>
         <td><%= link_to 'Destroy', ranking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
