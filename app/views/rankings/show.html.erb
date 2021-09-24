@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Card:</strong>
+  <%= @ranking.card_id %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= @ranking.rating_id %>
+</p>
+
+<p>
+  <strong>Selection:</strong>
+  <%= @ranking.selection_id %>
+</p>
+
+<%= link_to 'Edit', edit_ranking_path(@ranking) %> |
+<%= link_to 'Back', rankings_path %>

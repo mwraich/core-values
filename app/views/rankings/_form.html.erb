@@ -1,0 +1,32 @@
+<%= form_with(model: ranking) do |form| %>
+  <% if ranking.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(ranking.errors.count, "error") %> prohibited this ranking from being saved:</h2>
+
+      <ul>
+        <% ranking.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :card_id %>
+    <%= collection_select( :ranking, :card_id, Card.all, :id, :name,  { multiple: false}) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rating_id %>
+    <%= collection_select( :ranking, :rating_id, Rating.all, :id, :name, { multiple: false}) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :selection_id %>
+    <%= collection_select( :ranking, :selection_id, Selection.all, :id, :name, { multiple: false}) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
