@@ -1,0 +1,14 @@
+<%= form_with(url: url_for(controller: :rankings, action: :create_rankings)) do |f| %>
+    <dl>
+<% @cards.each do |card|%>
+<dt>Card Name <%= card.name %></dt>
+    <dd>  
+        <% @ratings.each do |rating| %>
+            <input type='radio' name='<%=card.name %>' value='<%= rating.id%>'>
+            <%= rating.name %>
+        <% end %>
+    </dd>
+<% end%>
+</dl>
+<%= f.submit %>
+<% end %>

@@ -1,2 +1,3 @@
 class Selection < ApplicationRecord
+    
 end

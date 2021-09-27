@@ -56,6 +56,23 @@ class RankingsController < ApplicationController
     end
   end
 
+  def show_create_rankings 
+    @cards = Card.all
+    @ratings = Rating.all
+  end
+
+  def create_rankings 
+    card_names = params.keys - %w(authenticity_token commit controller action)
+    params.permit(card_names).each do|card_name, rating_id| 
+      Ranking.create(
+        card: Card.find_by_name(card_name),
+        rating_id: rating_id,
+        selection: Selection.last
+      )
+    end
+    @rankings = Selection.last.rankings
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ranking
